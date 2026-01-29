@@ -1,11 +1,18 @@
 import argparse
+import numpy as np
 from PIL import Image
 
 
 def ascii(path, tile_size=4, font_size=10):
     # Converts image to ASCII art
     grayscale = Image.open(path).convert('L')
-    rgb = Image.open(path).convert('RGBA')
+    *rgb, alpha = Image.open(path).convert('RGBA').split()
+    grayscale_array = np.array(grayscale)
+    rgb_array = np.array(rgb)
+    alpha_array = np.array(alpha)
+    print(grayscale_array.shape)
+    print(rgb_array.shape)
+    print(alpha_array.shape)
     # Creating three separate numpy arrays for grayscale, color and alpha
     # Splitting arrays into tiles, and computing new height/weight
     # Averaging values inside each tile
@@ -37,7 +44,7 @@ def main():
         print(f"Processing file: {args.filename}")
     print(f"Mode: {args.mode}")
     if args.mode == "ascii":
-        print(f"Using ASCII mode to process {args.filename}...")
+        ascii(args.filename)
     elif args.mode == "geometric":
         print("Using geometric mode (no file needed)...")
 
