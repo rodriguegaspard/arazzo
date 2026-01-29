@@ -39,10 +39,7 @@ def main():
     if args.mode == "ascii":
         print(f"Using ASCII mode to process {args.filename}...")
     elif args.mode == "geometric":
-        if args.filename:
-            print(f"Using geometric mode to process {args.filename}...")
-        else:
-            print("Using geometric mode (no file needed)...")
+        print("Using geometric mode (no file needed)...")
 
 
 if __name__ == "__main__":
