@@ -1,4 +1,18 @@
 import argparse
+from PIL import Image
+
+
+def ascii(path, tile_size=4, font_size=10):
+    # Converts image to ASCII art
+    grayscale = Image.open(path).convert('L')
+    rgb = Image.open(path).convert('RGBA')
+    # Creating three separate numpy arrays for grayscale, color and alpha
+    # Splitting arrays into tiles, and computing new height/weight
+    # Averaging values inside each tile
+    # Use variable transparency or not?
+    # Iterate over each tile and draw tile if alpha is high enough
+    # Character is defined by grayscale average, color is applied to character
+    # Return the output
 
 
 def main():
